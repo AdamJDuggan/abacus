@@ -1,0 +1,31 @@
+function calculateGoal(){
+    //turn off button so it cant be re-pressed
+    // $('#hideIncExpAndCalcBtn').toggle();
+    // Calculate total income
+    let incomeSum = 0;
+    $(".incomeAmount").each(function(){
+        incomeSum += +$(this).val();
+    });
+    // Calculate total expenditure
+    let expSum = 0;
+    $(".expenseAmount").each(function(){
+        expSum += +$(this).val();
+    });
+    // Calculate remaining
+    let remaining = incomeSum - expSum;
+
+    $('#summarySection').append(
+        `<div class="column is-one-quarter has-background-grey has-t ext-white loginSummaryBtn has-text-centered">
+        <p class="heading is-size-6 has-text-weight-bold has-text-white ">Your monthly income</p>
+        <p class="title has-text-white">£${incomeSum}</p>
+        </div>
+        <div class="column is-one-quarter has-background-primary has-text-white loginSummaryBtn has-text-centered">
+        <p class="heading is-size-6 has-text-weight-bold ">Your total expenses</p>
+        <p class="title has-text-white">£${expSum}</p>
+        </div>
+        <div class="column is-one-quarter has-background-danger has-text-white loginSummaryBtn has-text-centered">
+        <p class="heading is-size-6 has-text-weight-bold ">Remaining p/m</p>
+        <p class="title has-text-white">£${remaining}</p>
+        </div>`
+    )
+};
